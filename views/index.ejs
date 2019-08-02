@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html lang="en" class="no-js">
+    <head>
+        <meta charset="utf-8">
+        <title>Gantt</title>
+        <meta name="description" content="FREE javascript gantt - jsGantt Improved HTML, CSS and AJAX only">
+        <meta name="keywords" content="jsgantt-improved free javascript gantt-chart html css ajax">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <!-- External resources -->
+        <!-- jQuery + Ajax [required by Bootstrap] -->
+        <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n"
+            crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb"
+            crossorigin="anonymous"></script>
+        <!-- Required by smooth scrolling -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <!-- Bootstrap v4.0.0 Alpha -->
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ"
+            crossorigin="anonymous" />
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn"
+            crossorigin="anonymous"></script>
+        <!-- Google Fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Cookie|Satisfy|Kelly+Slab|Overlock" rel="stylesheet">
+        <!-- jsGanttImproved App -->
+        <link href="/assets/css/jsgantt.css" rel="stylesheet" type="text/css" />
+        <script src="/assets/js/jsgantt.js" type="text/javascript"></script>
+    </head>
+    <body data-spy="scroll" data-target="#my-navbar-nav" style="padding: 30px;">
+        <p>test:&nbsp;<br/>
+            <span>
+                <button onclick="start()">Reload Data</button>
+                &nbsp;
+                <button onclick="clearTasks()">Clear Data</button>
+                &nbsp;
+                <button onclick="ExportTasks()">Export Data</button>
+                &nbsp;
+            </span>
+            <br/></p>
+        <div style="position:relative" class="gantt" id="GanttChartDIV"></div>
+        <p>
+        <span>
+            <hr/>
+          </span>
+        </p>
+    </body>
+    <script type="text/javascript">
+        let dataurl;
+        let jsonObj;
+        let g;
+
+        function start() {
+            g = new JSGantt.GanttChart(document.getElementById('GanttChartDIV'), 'day');
+            jsonObj='<%-TasksSet  %>';
+            jsonObj = JSGantt.addJSONTask(g, JSON.parse(jsonObj));
+            //jsonObj = JSGantt.parseJSON('/tasks_source_tasks.json', g, false);
+            /*
+            var jsonObj= {
+                pID: 2,
+                pName: "Define Chart <strong>API</strong>",
+                pStart: "2017-02-25",
+                pEnd: "2017-03-17",
+                pPlanStart: "2017-03-01",
+                pPlanEnd: "2017-03-15 12:00",
+                pClass: "ggroupblack",
+                pLink: "http://aitam.tcontas.pt/index",
+                pMile: 0,
+                pRes: "Paulo Almeida",
+                pComp: 0,
+                pGroup: 0,
+                pParent: 0,
+                pOpen: 1,
+                pDepend: "",
+                pCaption: "Define Chart API",
+                pCost: 1000,
+                pNotes: "Some Notes text",
+                category: "My Category",
+                sector: "Finance",
+                importance: "High"
+            };
+            g.AddTaskItemObject(jsonObj);
+            jsonObj= {
+                pID: 1,
+                pName: "Define Chart API",
+                pStart: "",
+                pEnd: "",
+                pPlanStart: "",
+                pPlanEnd: "",
+                pClass: "ggroupblack",
+                pLink: "",
+                pMile: 0,
+                pRes: "António Godinho",
+                pComp: 0,
+                pGroup: 1,
+                pParent: 0,
+                pOpen: 1,
+                pDepend: "",
+                pCaption: "",
+                pCost:  "",
+                pNotes: "Some Notes text",
+                category: "My Category",
+                sector: "Finance"
+            };
+            g.AddTaskItemObject(jsonObj);
+            g.AddTaskItemObject({
+                pID: 3,
+                pName: "Define Chart <strong>API</strong>",
+                pStart: "2017-02-25",
+                pEnd: "2017-03-17",
+                pPlanStart: "2017-03-01",
+                pPlanEnd: "2017-03-15 12:00",
+                pClass: "ggroupblack",
+                pLink: "http://aitam.tcontas.pt/index",
+                pMile: 0,
+                pRes: "Paulo Almeida",
+                pComp: 0,
+                pGroup: 0,
+                pParent: 0,
+                pOpen: 1,
+                pDepend: "",
+                pCaption: "Define Chart API",
+                pCost: 1000,
+                pNotes: "Some Notes text",
+                category: "My Category",
+                sector: "Finance",
+                importance: "High"
+            });
+            */        
+
+            g.setOptions({
+                vCaptionType: '<%=ganttOptions.oCaptionType  %>',
+                vQuarterColWidth:  <%=ganttOptions.oQuarterColWidth  %>,
+                vDateTaskDisplayFormat: '<%=ganttOptions.oDateTaskDisplayFormat  %>',
+                vDayMajorDateDisplayFormat: '<%=ganttOptions.oDayMajorDateDisplayFormat  %>',
+                vWeekMinorDateDisplayFormat: '<%=ganttOptions.oQuarterColWidth  %>',
+                vLang: '<%=ganttOptions.oLang  %>',
+                vShowRes: <%=ganttOptions.oShowRes  %>,
+                vShowCost: <%=ganttOptions.oShowCost  %>,
+                vShowAddEntries: <%=ganttOptions.oShowAddEntries  %>,
+                vShowComp: <%=ganttOptions.oShowComp  %>,
+                vShowDur: <%=ganttOptions.oShowDur  %>,
+                vShowStartDate: <%=ganttOptions.oShowStartDate  %>,
+                vShowEndDate: <%=ganttOptions.oShowEndDate  %>,
+                vShowPlanStartDate: <%=ganttOptions.oShowPlanStartDate  %>,
+                vShowPlanEndDate: <%=ganttOptions.oShowPlanEndDate  %>,
+                vAdditionalHeaders: <%-ganttOptions.oAdditionalHeaders  %>,
+                vShowTaskInfoLink: <%=ganttOptions.oShowTaskInfoLink  %>,
+                vShowEndWeekDate: <%=ganttOptions.oShowEndWeekDate  %>,
+                vUseSingleCell: <%=ganttOptions.oUseSingleCell  %>,
+                vDebug: <%-ganttOptions.oDebug %>,
+                vEditable: <%-ganttOptions.oEditable %>,
+                vScrollTo: '<%=ganttOptions.oScrollTo  %>',
+                vResources: <%-Team %>,
+                vFormatArr: [<%-ganttOptions.oFormatArr %>],
+            });
+    
+            g.Draw();
+        }
+
+        function ExportTasks() {
+            alert(g.getXMLProject());
+        }
+
+        function clearTasks() {
+            if (confirm("Are you sure you want to clear all tasks?")) {
+                g.ClearTasks();
+                g.Draw();
+            } 
+        }
+
+        start()
+    </script>
+</html>

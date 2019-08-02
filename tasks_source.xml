@@ -1,0 +1,372 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Audit>
+	<Arrangements>
+		<team>
+			<member id="0" name="Not allocated"/>
+			<member id="1" name="Paulo Almeida"/>
+			<member id="2" name="António Freire"/>
+			<member id="3" name="António Godinho"/>
+			<member id="4" name="Helder Correia"/>
+			<member id="5" name="João Amado"/>
+			<member id="6" name="Pedro Gonçalves"/>
+		</team>
+		<project>
+			<task>
+				<pID>1</pID>
+				<pName>Define Chart API</pName>
+				<pStart/>
+				<pEnd/>
+				<pPlanStart/>
+				<pPlanEnd/>
+				<pClass>ggroupblack</pClass>
+				<pLink>http://aitam.tcontas.pt/index</pLink>
+				<pMile>0</pMile>pMile>
+				<pRes>Paulo Almeida</pRes>
+				<pComp>0</pComp>
+				<pGroup>1</pGroup>
+				<pParent>0</pParent>
+				<pOpen>1</pOpen>
+				<pDepend/>
+				<pCaption/>
+				<pNotes>Some Notes text</pNotes>
+				<category>Planning</category>
+				<sector>CMO</sector>
+			</task>
+			<task>
+				<pID>11</pID>
+				<pName>Chart Object</pName>
+				<pStart>2019-06-20</pStart>
+				<pEnd>2019-07-20</pEnd>
+				<pClass>gmilestone</pClass>
+				<pLink/>
+				<pMile>1</pMile>
+				<pRes>António Freire</pRes>
+				<pComp>100</pComp>
+				<pGroup>0</pGroup>pGroup>
+    			<pParent>1</pParent>
+				<pOpen>1</pOpen>
+				<pDepend/>
+				<pCaption/>
+				<pNotes/>
+				<category>Executive</category>
+				<sector>CEO</sector>
+			</task>
+			<task>
+				<pID>12</pID>
+				<pName>Task Objects</pName>
+				<pStart/>
+				<pEnd/>
+				<pClass>ggroupblack</pClass>
+				<pLink/>
+				<pMile>0</pMile>pMile
+    			<pRes>Paulo Almeida</pRes>
+				<pComp>40</pComp>
+				<pGroup>1</pGroup>
+				<pParent>1</pParent>
+				<pOpen>1</pOpen>
+				<pDepend/>
+				<pCaption/>
+				<pNotes/>
+			</task>
+			<task>
+				<pID>121</pID>
+				<pName>Constructor Proc 1234 of February 2019</pName>
+				<pStart>2019-06-21</pStart>
+				<pEnd/>
+				<pClass>gtaskblue</pClass>
+				<pLink/>
+				<pMile>0</pMile>pMile>
+    			<pRes>António Godinho</pRes>
+				<pComp>60</pComp>
+				<pGroup>0</pGroup>pGroup>
+   				<pParent>12</pParent>
+				<pOpen>1</pOpen>
+				<pDepend/>
+				<pCaption/>
+				<pNotes/>
+				<pDuration>3 days</pDuration>
+				<deadline>2019-07-01</deadline>
+			</task>
+			<task>
+				<pID>122</pID>
+				<pName>Task Variables</pName>
+				<pStart>2019-07-06</pStart>
+				<pEnd>2019-07-11</pEnd>
+				<pPlanStart>2019-07-03</pPlanStart>
+				<pPlanEnd>2019-07-09</pPlanEnd>
+				<pClass>gtaskred</pClass>
+				<pLink/>
+				<pMile>0</pMile>
+				<pRes>Paulo Almeida</pRes>
+				<pComp>60</pComp>
+				<pGroup>0</pGroup>
+				<pParent>12</pParent>
+				<pOpen>1</pOpen>
+				<pDepend>121</pDepend>
+				<pCaption/>
+				<pNotes/>
+				<deadline>2019-07-10</deadline>
+			</task>
+			<task>
+				<pID>123</pID>
+				<pName>Task by Minute/Hour</pName>
+				<pStart>2019-07-01</pStart>
+				<pEnd>2019-07-15 12:00</pEnd>
+				<pClass>gtaskyellow</pClass>
+				<pLink/>
+				<pMile>0</pMile>
+				<pRes>António Godinho</pRes>
+				<pComp>60</pComp>
+				<pGroup>0</pGroup>
+				<pParent>12</pParent>
+				<pOpen>1</pOpen>
+				<pDepend/>
+				<pCaption/>
+				<pNotes/>
+				<pCost>1000</pCost>
+			</task>
+			<task>
+				<pID>124</pID>
+				<pName>Task Functions</pName>
+				<pStart>2019-07-09</pStart>
+				<pEnd>2019-07-29</pEnd>
+				<pClass>gtaskred</pClass>
+				<pLink/>
+				<pMile>0</pMile>
+				<pRes>Not allocated</pRes>
+				<pComp>60</pComp>
+				<pGroup>0</pGroup>
+				<pParent>12</pParent>
+				<pOpen>1</pOpen>
+				<pDepend>123SS</pDepend>
+				<pCaption>This is a caption</pCaption>
+				<pNotes>null</pNotes>
+				<pCost>34</pCost>
+				<deadline>2019-07-05</deadline>
+			</task>
+			<task>
+				<pID>2</pID>
+				<pName>Create HTML Shell</pName>
+				<pStart>2019-07-24</pStart>
+				<pEnd>2019-07-24</pEnd>
+				<pClass>gtaskyellow</pClass>
+				<pLink/>
+				<pMile>0</pMile>
+				<pRes>António Godinho</pRes>
+				<pComp>20</pComp>
+				<pGroup>0</pGroup>
+				<pParent>0</pParent>
+				<pOpen>1</pOpen>
+				<pDepend>122</pDepend>
+				<pCaption/>
+				<pNotes/>
+			</task>
+			<task>
+				<pID>3</pID>
+				<pName>Code Javascript</pName>
+				<pStart/>
+				<pEnd/>
+				<pClass>ggroupblack</pClass>
+				<pLink/>
+				<pMile>0</pMile>
+				<pRes>Paulo Almeida</pRes>
+				<pComp>0</pComp>
+				<pGroup>1</pGroup>
+				<pParent>0</pParent>
+				<pOpen>1</pOpen>
+				<pDepend/>
+				<pCaption/>
+				<pNotes/>
+			</task>
+			<task>
+				<pID>31</pID>
+				<pName>Define Variables</pName>
+				<pStart>2019-06-25</pStart>
+				<pEnd>2019-07-17</pEnd>
+				<pPlanStart>2019-06-24</pPlanStart>
+				<pPlanEnd>2019-07-15 12:00</pPlanEnd>
+				<pClass>gtaskpurple</pClass>
+				<pLink/>
+				<pMile>0</pMile>
+				<pRes>Helder Correia</pRes>
+				<pComp>30</pComp>
+				<pGroup>0</pGroup>
+				<pParent>3</pParent>
+				<pOpen>1</pOpen>
+				<pDepend/>
+				<pCaption/>
+				<pNotes/>
+			</task>
+			<task>
+				<pID>32</pID>
+				<pName>Calculate One Day</pName>
+				<pStart>2019-07-15 00:00</pStart>
+				<pEnd>2019-07-16 00:00</pEnd>
+				<pClass>gtaskgreen</pClass>
+				<pLink/>
+				<pMile>0</pMile>
+				<pRes>Paulo Almeida</pRes>
+				<pComp>40</pComp>
+				<pGroup>0</pGroup>
+				<pParent>3</pParent>
+				<pOpen>1</pOpen>
+				<pDepend/>
+				<pCaption/>
+				<pNotes/>
+			</task>
+			<task>
+				<pID>33</pID>
+				<pName>Draw Task Items</pName>
+				<pStart/>
+				<pEnd/>
+				<pClass>ggroupblack</pClass>
+				<pLink/>
+				<pMile>0</pMile>
+				<pRes>Not allocated</pRes>
+				<pComp>40</pComp>
+				<pGroup>2</pGroup>
+				<pParent>3</pParent>
+				<pOpen>1</pOpen>
+				<pDepend/>
+				<pCaption/>
+				<pNotes/>
+			</task>
+			<task>
+				<pID>332</pID>
+				<pName>Task Label Table</pName>
+				<pStart>2019-07-06</pStart>
+				<pEnd>2019-07-09</pEnd>
+				<pClass>gtaskblue</pClass>
+				<pLink/>
+				<pMile>0</pMile>
+				<pRes>Paulo Almeida</pRes>
+				<pComp>60</pComp>
+				<pGroup>0</pGroup>
+				<pParent>33</pParent>
+				<pOpen>1</pOpen>
+				<pDepend/>
+				<pCaption/>
+				<pNotes/>
+			</task>
+			<task>
+				<pID>333</pID>
+				<pName>Task Scrolling Grid</pName>
+				<pStart>2019-07-11</pStart>
+				<pEnd>2019-07-20</pEnd>
+				<pClass>gtaskblue</pClass>
+				<pLink/>
+				<pMile>0</pMile>
+				<pRes>António Freire</pRes>
+				<pComp>0</pComp>
+				<pGroup>0</pGroup>
+				<pParent>33</pParent>
+				<pOpen>1</pOpen>
+				<pDepend>332</pDepend>
+				<pCaption/>
+				<pNotes/>
+			</task>
+			<task>
+				<pID>34</pID>
+				<pName>Draw Task Bars</pName>
+				<pStart/>
+				<pEnd/>
+				<pClass>ggroupblack</pClass>
+				<pLink/>
+				<pMile>0</pMile>
+				<pRes>Not allocated</pRes>
+				<pComp>67</pComp>
+				<pGroup>1</pGroup>
+				<pParent>3</pParent>
+				<pOpen>0</pOpen>
+				<pDepend/>
+				<pCaption/>
+				<pNotes/>
+			</task>
+			<task>
+				<pID>341</pID>
+				<pName>Loop each Task</pName>
+				<pStart>2019-03-26</pStart>
+				<pEnd>2019-04-11</pEnd>
+				<pClass>gtaskred</pClass>
+				<pLink/>
+				<pMile>0</pMile>
+				<pRes>António Freire</pRes>
+				<pComp>60</pComp>
+				<pGroup>0</pGroup>
+				<pParent>34</pParent>
+				<pOpen>1</pOpen>
+				<pDepend/>
+				<pCaption/>
+				<pNotes/>
+			</task>
+			<task>
+				<pID>A342</pID>
+				<pName>Calculate Start/Stop</pName>
+				<pStart>2019-04-12</pStart>
+				<pEnd>2019-05-18</pEnd>
+				<pClass>gtaskpink</pClass>
+				<pLink/>
+				<pMile>0</pMile>
+				<pRes>Paulo Almeida</pRes>
+				<pComp>60</pComp>
+				<pGroup>0</pGroup>
+				<pParent>34</pParent>
+				<pOpen>1</pOpen>
+				<pDepend/>
+				<pCaption/>
+				<pNotes/>
+			</task>
+			<task>
+				<pID>343</pID>
+				<pName>Draw Task Div</pName>
+				<pStart>2019-05-13</pStart>
+				<pEnd>2019-05-17</pEnd>
+				<pClass>gtaskred</pClass>
+				<pLink/>
+				<pMile>0</pMile>
+				<pRes>Paulo Almeida</pRes>
+				<pComp>60</pComp>
+				<pGroup>0</pGroup>
+				<pParent>34</pParent>
+				<pOpen>1</pOpen>
+				<pDepend/>
+				<pCaption/>
+				<pNotes/>
+			</task>
+			<task>
+				<pID>344</pID>
+				<pName>Draw Completion Div</pName>
+				<pStart>2019-05-17</pStart>
+				<pEnd>2019-06-04</pEnd>
+				<pClass>gtaskred</pClass>
+				<pLink/>
+				<pMile>0</pMile>
+				<pRes>António Freire</pRes>
+				<pComp>60</pComp>
+				<pGroup>0</pGroup>
+				<pParent>34</pParent>
+				<pOpen>1</pOpen>
+				<pDepend>A342,343</pDepend>
+				<pCaption/>
+				<pNotes/>
+			</task>
+			<task>
+				<pID>35</pID>
+				<pName>Just plan dates</pName>
+				<pPlanStart>2019-07-17</pPlanStart>
+				<pPlanEnd>2019-09-15</pPlanEnd>
+				<pClass>gtaskpurple</pClass>
+				<pLink/>
+				<pMile>0</pMile>
+				<pRes>António Godinho</pRes>
+				<pComp>0</pComp>
+				<pGroup>0</pGroup>
+				<pParent>3</pParent>
+				<pOpen>1</pOpen>
+				<pDepend>333</pDepend>
+				<pCaption/>
+				<pNotes/>
+			</task>
+		</project>
+	</Arrangements>
+</Audit>
