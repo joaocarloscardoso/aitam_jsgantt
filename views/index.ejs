@@ -46,14 +46,25 @@ and open the template in the editor.
         <p>
         <span>
             <hr/>
-          </span>
-        </p>
+        </span>
+        <div class="col-12">
+            <input type="checkbox" id="editable" onchange="redraw(event)" />
+            <label>Inline editing</label>
+            <ul class="actions">
+                <li><a href="/assets/html/edittask.html?task=new" class="button">New task</a></li>
+            </ul>
+        </div>
+</p>
     </body>
     <script type="text/javascript">
         let dataurl;
         let jsonObj;
         let g;
 
+        function GetCurrentTask(task){
+            window.location.href = '/assets/html/edittask.html?task=' + task.getOriginalID();
+        }
+        
         function start() {
             g = new JSGantt.GanttChart(document.getElementById('GanttChartDIV'), 'day');
             jsonObj='<%-TasksSet  %>';
@@ -155,10 +166,18 @@ and open the template in the editor.
                 vDebug: <%-ganttOptions.oDebug %>,
                 vEditable: <%-ganttOptions.oEditable %>,
                 vScrollTo: '<%=ganttOptions.oScrollTo  %>',
+                vEvents: {
+                    addentries: GetCurrentTask,
+                },
                 vResources: <%-Team %>,
                 vFormatArr: [<%-ganttOptions.oFormatArr %>],
             });
-    
+
+            g.Draw();
+        }
+
+        function redraw(e) {
+            g.setEditable(e.target.checked);
             g.Draw();
         }
 

@@ -9,14 +9,14 @@ module.exports = {
         oUseSingleCell: 10000, // Set the threshold at which we will only use one cell per table row (0 disables).  Helps with rendering performance for large charts.
         oShowRes: 1,
         oShowCost: 1,
-        oShowAddEntries: 0,  //exibits a plus button (1/0)
+        oShowAddEntries: 1,  //exibits a plus button (1/0)
         oShowComp: 1,
         oShowDur: 1,
         oShowStartDate: 1,
         oShowEndDate: 1,
         oShowPlanStartDate: 1,
         oShowPlanEndDate: 1,
-        oAdditionalHeaders: "{category: {title: 'Category'},sector: {title: 'Sector'},importance: {title: 'Importance'}}",
+        oAdditionalHeaders: "{category: {title: 'Category'},sector: {title: 'Sector'},importance: {title: 'Importance'}, task_ref: {title: 'Task ID'}}",
         //oTotalHeight: ,  //CSS style height like "300px". Empty for auto height
         oMinDate: '2017-01-01',
         oMaxDate: '2017-12-31',
@@ -29,7 +29,7 @@ module.exports = {
         //    generateTooltip :
         //    newtooltiptemplate,
         oDebug: false,
-        oEditable: true, // true or false
+        oEditable: false, // inline editing: true or false
         oColumnOrder: [], // array or use [] for unsorted
         oScrollTo: 'today', // or new Date() or a Date object with a specific date
         oUseSort: true, // true or false

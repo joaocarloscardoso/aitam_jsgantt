@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+
+
+<form action="/action_page.php">
+    <div class="row gtr-50">
+        <header>
+            <h3>Task form</h3>
+            <p>(new task)</p>
+        </header>
+        <div class="col-12">
+            ID:<br/>
+            <input type="text" name="v_pID" id="v_pID" placeholder="Task ID" value="" disabled style="width: 70px">
+        </div>
+        <div class="col-12">
+          Name:<br/>
+          <input type="text" name="v_pName" id="v_pName" placeholder="Task name" value="" autofocus>
+        </div>
+        <div class="col-12">
+            Plan start date:<br/>
+            <input type="date" name="v_pPlanStart" id="v_pPlanStart" value="" style="width: 120px">
+        </div>
+        <div class="col-12">
+            Plan end date:<br/>
+            <input type="date" name="v_pPlanEnd" id="v_pPlanEnd" value="" style="width: 120px">
+        </div>
+        <div class="col-12">
+            Start date:<br/>
+            <input type="date" name="v_pStart" id="v_pStart" value="" style="width: 120px">
+        </div>
+        <div class="col-12">
+            End date:<br/>
+            <input type="date" name="v_pEnd" id="v_pEnd" value="" style="width: 120px">
+        </div>
+        <div class="col-12">
+            Resource<br/>
+            <select name="v_pRes" id="v_pRes" size="1">
+                <option value="Not allocated" selected>Not allocated</option>
+                <option value="António Freire">António Freire</option>
+                <option value="António Godinho">António Godinho</option>
+                <option value="Hélder Correia">Hélder Correia</option>
+                <option value="João Amado">João Amado</option>
+                <option value="Paulo Almeida">Paulo Almeida</option>
+             </select>
+        </div>
+        <div class="col-12">
+            Completion (%) <span id="v_pCompRes">0</span><br/>
+            <input type="range" name="v_pComp" id="v_pComp" min="0" max="100" list="tickmarks" value=0>
+
+            <datalist id="tickmarks">
+              <option value="0" label="0%">
+              <option value="10">
+              <option value="20">
+              <option value="30">
+              <option value="40">
+              <option value="50" label="50%">
+              <option value="60">
+              <option value="70">
+              <option value="80">
+              <option value="90">
+              <option value="100" label="100%">
+            </datalist>
+        </div>
+        <div class="col-12">
+            Cost:<br/>
+            <input type="text" name="v_pCost" id="v_pCost" value="0">
+        </div>
+        <div class="col-12">
+            Importance<br/>
+            <select name="importance" id="importance" size="1">
+                <option value="High" selected>High</option>
+                <option value="Medium">Medium</option>
+                 <option value="Low">Low</option>
+            </select>
+        </div>
+        <br/><hr/>
+        <header>
+            <h3>Type</h3>
+        </header>
+        <div class="col-12">
+            Status<br/>
+            <select name="v_pOpen" id="v_pOpen" size="1">
+                <option value="1" selected>Open</option>
+                <option value="0">Closed</option>
+             </select>
+        </div>
+        <div class="col-12">
+            Milestone<br/>
+            <select name="v_pMile" id="v_pMile" size="1">
+                <option value="1">Yes</option>
+                <option value="0" selected>No</option>
+             </select>
+        </div>
+        <div class="col-12">
+            Group task<br/>
+            <select name="v_pGroup" id="v_pGroup" size="1">
+                <option value="1">Yes</option>
+                <option value="0" selected>No</option>
+             </select>
+        </div>
+        <div class="col-12">
+          Depends on<br/>
+           <textarea name="v_pDepend" id="v_pDepend" placeholder="List of ID's this task is dependent (comma separated)" rows="2"></textarea>
+        </div>
+        <br/><hr/>
+        <header>
+            <h3>Links to</h3>
+        </header>
+        <div class="col-12">
+            Category<br/>
+            <select name="category" id="category" size="1">
+                <option value="Reference">Reference</option>
+                <option value="Preassessment">Preassessment</option>
+                <option value="Planning">Planning</option>
+                <option value="Findings">Findings</option>
+                <option value="Other" selected>Other</option>
+             </select>
+        </div>
+        <div class="col-12" id="Planning" style="display: none">
+            Sector<br/>
+            <select name="v_plan_sector" id="v_plan_sector" size="1">
+            </select>
+            <br/>
+            Domain<br/>
+            <select name="v_plan_domain" id="v_plan_domain" size="1">
+            </select>
+            <br/>
+            Area<br/>
+            <select name="v_plan_area" id="v_plan_area" size="1">
+            </select>
+            <br/>
+            Issue<br/>
+            <select name="v_plan_issue" id="v_plan_issue" size="1">
+            </select>            
+        </div>
+        <div class="col-12" id="Preassessment" style="display: none">
+            Area<br/>
+            <select name="v_plan_area" id="v_pre_area" size="1">
+            </select>
+            <br/>
+            Issue<br/>
+            <select name="v_plan_issue" id="v_pre_issue" size="1">
+            </select>            
+        </div>
+        <div class="col-12" id="Findings" style="display: none">
+            Finding<br/>
+            <select name="finding" id="finding" size="1">
+            </select>            
+        </div>
+        <div class="col-12" id="Other" style="display: block">
+            Add a URL<br/>
+            <input type="url" name="hyperlink" placeholder="Any http hyperlink to reference">
+        </div>
+        <input type="hidden" id="v_pLink" name="v_pLink" value=""/>
+        <br/><hr/>
+        <div class="col-12">
+            <textarea name="v_pNotes" id="v_pNotes" placeholder="Notes about the task" rows="6"></textarea>
+        </div>
+        <div class="col-12">
+            <ul class="actions">
+                <li><a href="#" class="button">Close</a></li>
+                <li><input type="submit" class="button alt" value="Save" /></li>
+            </ul>
+        </div>
+
+
+    </div>
+</form> 
+
+<script>
+    var slider = document.getElementById("v_pComp");
+    var output = document.getElementById("v_pCompRes");
+    output.innerHTML = slider.value;
+
+    slider.oninput = function() {
+      output.innerHTML = this.value;
+    };
+    
+    var elem = document.getElementById("category");
+    elem.onchange = function(){
+        var hiddenDiv1 = document.getElementById("Planning");
+        var hiddenDiv2 = document.getElementById("Preassessment");
+        var hiddenDiv3 = document.getElementById("Findings");
+        hiddenDiv1.style.display = "none";
+        hiddenDiv2.style.display = "none";
+        hiddenDiv3.style.display = "none";
+        document.getElementById(this.value).style.display="block";
+    };
+</script>
+
+</body>
+</html>
+
