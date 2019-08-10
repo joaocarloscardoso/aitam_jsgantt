@@ -120,33 +120,51 @@
         </div>
         <div class="col-12" id="Planning" style="display: none">
             Sector<br/>
-            <select name="v_plan_sector" id="v_plan_sector" size="1">
+            <select name="v_plan_sector" id="v_plan_sector" size="1" onchange="RedoDomains()">
+                 <option value="AITAM" selected>AITAM</option>
             </select>
             <br/>
             Domain<br/>
-            <select name="v_plan_domain" id="v_plan_domain" size="1">
+            <select name="v_plan_domain" id="v_plan_domain" size="1" onchange="RedoAreas()">
+                <option value="AITAM_01" selected>01 IT Governance</option>
+                <option value="AITAM_02">02 IT Operations</option>
+                <option value="AITAM_03">03 Development and Acquisition</option>
+                <option value="AITAM_04">04 Outsourcing</option>
+                <option value="AITAM_06">06 BCP-DRP</option>
+                <option value="AITAM_07">07 Application Controls</option>
             </select>
             <br/>
             Area<br/>
-            <select name="v_plan_area" id="v_plan_area" size="1">
+            <select name="v_plan_area" id="v_plan_area" size="1" onchange="RedoIssues()">
+                <option value="AITAM_01_01">01 Business Needs Identification, Direction and Monitoring</option>
+                <option value="AITAM_01_02" selected>02 IT Strategy and Planning</option>
             </select>
             <br/>
             Issue<br/>
             <select name="v_plan_issue" id="v_plan_issue" size="1">
+                <option value="AITAM_01_02_01">01 Quality of IT strategy</option>
             </select>            
         </div>
         <div class="col-12" id="Preassessment" style="display: none">
             Area<br/>
-            <select name="v_plan_area" id="v_pre_area" size="1">
-            </select>
+            <select name="v_plan_area" id="v_pre_area" size="1"  onchange="RedoPreIssues()">
+                <option value="A1" selected>Preliminary Activities</option>
+                <option value="A2">Planning the Audit</option>
+             </select>
             <br/>
             Issue<br/>
             <select name="v_plan_issue" id="v_pre_issue" size="1">
-            </select>            
+                <option value="A1_01" selected>01 Preliminary Activities</option>
+                <option value="A1_02">02 Planning meeting of the IT audit team</option>
+                <option value="A1_03">03 Opening meeting with the management of the audited entity</option>
+           </select>            
         </div>
         <div class="col-12" id="Findings" style="display: none">
             Finding<br/>
             <select name="finding" id="finding" size="1">
+                <option value="F20181215-125507" selected>F20181215-125507</option>
+                <option value="F20181215-125508" selected>F20181215-125508</option>
+                <option value="F20190203-203146" selected>F20190203-203146</option>
             </select>            
         </div>
         <div class="col-12" id="Other" style="display: block">
@@ -170,6 +188,70 @@
 </form> 
 
 <script>
+    var PreAreas=[
+        "A1#Preliminary Activities"
+        ,"A2#Planning the Audit"        
+    ];
+    
+    var PreIssues=[
+        "A1_01#01 Preliminary Activities"
+        ,"A1_02#02 Planning meeting of the IT audit team"
+        ,"A1_03#03 Opening meeting with the management of the audited entity"
+        ,"A2_01#01 Understanding the entity"
+        ,"A2_02#02 Understanding the IT-systems"
+        ,"A2_03#03 Input into audit strategy and audit plan"
+   ];
+    
+    var Domains=[
+        "AITAM_01#01 IT Governance"
+        ,"AITAM_02#02 IT Operations"
+        ,"AITAM_03#03 Development and Acquisition"
+        ,"AITAM_04#04 Outsourcing"
+        ,"AITAM_06#06 BCP-DRP"
+        ,"AITAM_07#07 Application Controls"
+    ];
+    
+    var Areas=[
+        "AITAM_01_01#01 Business Needs Identification, Direction and Monitoring"
+        ,"AITAM_01_02#02 IT Strategy and Planning"
+        ,"AITAM_02_01#01 IT Service Continuity management"
+        ,"AITAM_02_02#02 Capacity Management"
+        ,"AITAM_02_03#03 Problem and Incident Management"
+        ,"AITAM_02_04#04 Change Management"
+        ,"AITAM_03_03#03 Quality Assurance and Testing"
+        ,"AITAM_03_04#04 Solicitation"
+        ,"AITAM_03_05#05 Configuration Management"
+        ,"AITAM_04_04#04 Data Rights"
+        ,"AITAM_04_08#08 Service Level Agreement"
+        ,"AITAM_04_09#09 Security"
+        ,"AITAM_06_05#05 Disaster Recovery Plan"
+        ,"AITAM_06_06#06 Testing"
+        ,"AITAM_07_01#01 Input Controls"
+    ];        
+
+    var Issues=[
+        "AITAM_01_01_01#01 Defining IT requirements"
+        ,"AITAM_01_01_02#02 Leadership"
+        ,"AITAM_01_01_03#03 IT Investments"
+        ,"AITAM_01_02_01#01 Quality of IT strategy"
+        ,"AITAM_02_01_01#01 Key parameters"
+        ,"AITAM_02_01_03#03 Effectiveness"
+        ,"AITAM_02_02_01#01 Agree to parameters"
+        ,"AITAM_02_02_02#02 Monitoring"
+        ,"AITAM_02_03_02#02 Skill sets and resources"
+        ,"AITAM_02_03_03#03 Effectiveness of response"
+        ,"AITAM_02_04_03#03 Emergency changes"
+        ,"AITAM_03_03_02#02 Plan for and conduct testing on IT systems"
+        ,"AITAM_03_04_02#02 Selecting a vendor"
+        ,"AITAM_03_05_01#01 Policy for configuration management"
+        ,"AITAM_04_04_01#01 Data Rights"
+        ,"AITAM_04_08_01#01 Service Level Agreement"
+        ,"AITAM_04_09_01#01 Identified security requirements"
+        ,"AITAM_06_05_01#01 Data and program back up procedures"
+        ,"AITAM_06_06_01#01 Testing the BCP and DRP"
+        ,"AITAM_07_01_02#02 Management of source documents, data collection and entry"
+    ];
+    
     var slider = document.getElementById("v_pComp");
     var output = document.getElementById("v_pCompRes");
     output.innerHTML = slider.value;
@@ -183,11 +265,72 @@
         var hiddenDiv1 = document.getElementById("Planning");
         var hiddenDiv2 = document.getElementById("Preassessment");
         var hiddenDiv3 = document.getElementById("Findings");
+        var hiddenDiv4 = document.getElementById("Other");
         hiddenDiv1.style.display = "none";
         hiddenDiv2.style.display = "none";
         hiddenDiv3.style.display = "none";
+        hiddenDiv4.style.display = "none";
         document.getElementById(this.value).style.display="block";
     };
+    
+    function RedoDomains(){
+        document.getElementById("v_plan_domain").innerHTML = "<option></option>";
+        document.getElementById("v_plan_area").innerHTML = "<option></option>";
+        document.getElementById("v_plan_issue").innerHTML = "<option></option>";
+        //redo domain dropdown
+        var selOptions = "";
+        for (var j=0; j<Domains.length; j++) {
+            var items = Domains[j].split("#");
+            if (items[0].indexOf(document.getElementById("v_plan_sector").value) > -1){
+                selOptions += "<option value='" + items[0]+ "'>" + items[1] + "</option>";
+            }
+        }
+        document.getElementById("v_plan_domain").innerHTML = selOptions;
+        RedoAreas();
+        RedoIssues();
+    }
+
+    function RedoAreas(){
+        document.getElementById("v_plan_area").innerHTML = "<option></option>";
+        document.getElementById("v_plan_issue").innerHTML = "<option></option>";    
+        //redo area dropdown
+        var selOptions = "";
+        for (var j=0; j<Areas.length; j++) {
+            var items = Areas[j].split("#");
+            if (items[0].indexOf(document.getElementById("v_plan_domain").value) > -1){
+                selOptions += "<option value='" + items[0]+ "'>" + items[1] + "</option>";
+            }
+        }
+        document.getElementById("v_plan_area").innerHTML = selOptions;
+        RedoIssues();
+    }
+
+    function RedoIssues(){
+        document.getElementById("v_plan_issue").innerHTML = "<option></option>";            
+        //redo issue dropdown
+        var selOptions = "";
+        for (var j=0; j<Issues.length; j++) {
+            var items = Issues[j].split("#");
+            if (items[0].indexOf(document.getElementById("v_plan_area").value) > -1){
+                selOptions += "<option value='" + items[0]+ "'>" + items[1] + "</option>";
+            }
+        }
+        document.getElementById("v_plan_issue").innerHTML = selOptions;
+    }
+ 
+    function RedoPreIssues(){
+        document.getElementById("v_pre_issue").innerHTML = "<option></option>";
+        //redo domain dropdown
+        var selOptions = "";
+        for (var j=0; j<PreIssues.length; j++) {
+            var items = PreIssues[j].split("#");
+            if (items[0].indexOf(document.getElementById("v_pre_area").value) > -1){
+                selOptions += "<option value='" + items[0]+ "'>" + items[1] + "</option>";
+            }
+        }
+        document.getElementById("v_pre_issue").innerHTML = selOptions;
+     }
+    
 </script>
 
 </body>
