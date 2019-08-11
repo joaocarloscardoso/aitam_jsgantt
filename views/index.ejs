@@ -32,8 +32,9 @@ and open the template in the editor.
         <script src="/assets/js/jsgantt.js" type="text/javascript"></script>
 
         <!--custom pop-up modal-->
-        <script src="/assets/js/popupS.min.js"></script>
-        <link href="/assets/css/popupS.min.css" rel="stylesheet" type="text/css">
+        <!--<script src="/assets/js/popupS.min.js"></script>-->
+        <!--<link href="/assets/css/popupS.min.css" rel="stylesheet" type="text/css">-->
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     </head>
     <body data-spy="scroll" data-target="#my-navbar-nav" style="padding: 30px;">
             <p>test:&nbsp;<br/>
@@ -67,9 +68,56 @@ and open the template in the editor.
         let g;
 
         function GetCurrentTask(task){
-            popupS.modal({
-            content: '<div class="dropper-form aligned"><div class="dropper-form-group"><a id="EditTask" href="/assets/html/edittask.html?task=' + task.getOriginalID() + '&op=edit">Edit task</a><br/><a id="NewTask" href="/assets/html/edittask.html?task=' + task.getOriginalID() + '&op=new">Create dependent task</a><br/>&nbsp;<br/><a id="Del1Task" href="/assets/html/edittask.html?task=' + task.getOriginalID() + '&op=new">Delete task</a><br/><a id="Del2Task" href="/assets/html/edittask.html?task=' + task.getOriginalID() + '&op=new">Delete task and dependents</a></div></div>'
-            });
+            swal({
+                title: "Available actions",
+                text: "On task #" + task.getOriginalID(),
+                icon: "warning",
+                buttons: {
+                    Edit: {
+                        text: "Edit",
+                        value: "edit|" + task.getOriginalID(),
+                        closeModal: true,
+                    },
+                    New: {
+                        text: "New dependent",
+                        value: "new|" + task.getOriginalID(),
+                        closeModal: true,
+                    },
+                    Delete: {
+                        text: "Delete",
+                        value: "del|" + task.getID(),
+                        closeModal: true,
+                    },
+                    Close: {
+                        text: "Close",
+                        value: true,
+                        closeModal: true,
+                    },
+                },
+            })
+            .then((value) => {
+                var action = value.split("|");
+                switch (action[0]) {
+                
+                    case "edit":
+                        window.location.href = '/assets/html/edittask.html?task='+action[1] + '&op=edit';
+                    break;
+                
+                    case "new":
+                        window.location.href = '/assets/html/edittask.html?task='+ action[1] + '&op=new';
+                    break;
+
+                    case "del":
+                        start()
+                        g.RemoveTaskItem(action[1]);
+                        g.Draw();
+                    break;
+                }
+            });            
+            //("Available actions on task #" + task.getOriginalID(), "...and here's the text!", "info");
+            //popupS.modal({
+            //content: '<div class="dropper-form aligned"><div class="dropper-form-group"><a id="EditTask" href="/assets/html/edittask.html?task=' + task.getOriginalID() + '&op=edit">Edit task</a><br/><a id="NewTask" href="/assets/html/edittask.html?task=' + task.getOriginalID() + '&op=new">Create dependent task</a><br/>&nbsp;<br/><a id="Del1Task" href="#" onclick="DeleteTask(' + task.getOriginalID() + ')">Delete task</a><br/><a id="Del2Task" href="/assets/html/edittask.html?task=' + task.getOriginalID() + '&op=new">Delete task and dependents</a></div></div>'
+            //});
             //popupS.window({
             //    mode: 'alert',
             //    content: '/assets/html/edittask.html?task=' + task.getOriginalID()
@@ -201,6 +249,12 @@ and open the template in the editor.
         function clearTasks() {
             if (confirm("Are you sure you want to clear all tasks?")) {
                 g.ClearTasks();
+                g.Draw();
+            } 
+        }
+
+        function DeleteTask(TaskId) {
+            if (confirm("Are you sure you want to delete task " + TaskId + "?")) {
                 g.Draw();
             } 
         }
